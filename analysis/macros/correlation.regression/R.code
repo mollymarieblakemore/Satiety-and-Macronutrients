@@ -14,7 +14,7 @@ cor_protein <-cor.test(SM$satiety, SM$ProteinG, method = "pearson")
 cor_carb <-cor.test(SM$satiety, SM$CarbG, method = "pearson")
 cor_fat <-cor.test(SM$satiety, SM$FatG, method = "pearson")
 
-#All significant (<.05) 
+#All correlations (p <.05) 
 
 #-----------------
 #Single regressions of satiety with macros
