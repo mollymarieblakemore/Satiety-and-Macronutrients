@@ -1,0 +1,27 @@
+Install: 
+
+library("psych")
+
+#------------
+#Descriptives
+#------------
+macros <- c("ProteinG", "CarbG", "FatG")
+describe(SM[, macros])
+
+#----------------
+#Correlations of satiety with macros
+#----------------
+ 
+cor_protein <-cor.test(SM$satiety, SM$ProteinG, method = "pearson")
+cor_carb <-cor.test(SM$satiety, SM$CarbG, method = "pearson")
+cor_fat <-cor.test(SM$satiety, SM$FatG, method = "pearson")
+
+#All significant (<.05) 
+
+#-----------------
+#Single regressions of satiety with macros
+#-----------------
+
+reg_protein <- lm(satiety ~ ProteinG, data = SM)
+reg_carb <- lm(satiety ~ CarbG, data = SM)
+reg_fat <- lm(satiety ~ FatG, data = SM)
