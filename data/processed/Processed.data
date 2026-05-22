@@ -44,5 +44,4 @@ sat_cor <- cor.test(SM$PS_mixmeans, SM$Por_mixmeans, method = "pearson")
 
 # High correlation (r > .8) indicates multicollinearity
 # Create composite satiety variable
-SM <- SM %>%
-  mutate(satiety = rowMeans(select(., PS_mixmeans, Por_mixmeans), na.rm = TRUE))
+satiety <- rowMeans(SM[, c("PS_mixmeans", "Por_mixmeans")])
