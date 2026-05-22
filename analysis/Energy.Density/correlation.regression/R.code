@@ -4,6 +4,8 @@
 cor.test(SM$KCAL_100g, SM$satiety)
 
 # Correlation Scatterplot
+library(ggplot2)
+
 ggplot(SM, aes(x = KCAL_100g, y = satiety)) +
   geom_point() +
   labs(
