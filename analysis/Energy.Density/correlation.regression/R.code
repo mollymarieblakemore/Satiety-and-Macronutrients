@@ -20,29 +20,3 @@ ggplot(SM, aes(x = KCAL_100g, y = satiety)) +
 ED_reg <- lm(satiety ~ KCAL_100g, data = SM)
 summary(ED_reg)
 # Evidence of potential non-linearity 
-
-#------------------------------------------------
-# Locally Estimated Scatterplot Smoothing (LOESS) 
-#------------------------------------------------
-
-ggplot(SM, aes(x = KCAL_100g, y = satiety)) +
-  geom_point() +
-  geom_smooth(method = "loess", se = TRUE, level = 0.95) +
-  labs(
-    title = "LOESS Curve with 95% Confidence Interval: Energy Density vs Satiety",
-    x = "KCAL per 100g",
-    y = "Satiety Rating" )
-+ theme_minimal()
-#----------------------
-# Segmented Regression
-#----------------------
-
-# Used to estimate breakpoint
-
- segmented_model <- segmented( ED_reg, seg.Z = ~KCAL_100g)
- 
- summary(segmented_model)
- confint(segmented_model)
- plot(segmented_model)
-
-# Estimated breakpoint ≈ 120.24 kcal/100g
