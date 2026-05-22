@@ -6,7 +6,8 @@ Obesity remains a major global health issue, with approximately 890 million peop
 Previous research suggests a hierarchy of satiation: Protein > Carbohydrate > Fat, and highlights the importance of low energy density foods in promoting satiety.
 However, less is known about perceived satiety (PS)—consumer expectations of fullness prior to consumption.
 
-This study examines how macronutrient composition and energy density influence perceived satiety ratings.
+### Research Question
+How do macronutrient composition (protein, carbohydrate, fat) and energy density influence perceived satiety in commonly consumed UK foods?
 
 ## Study Design
 312 foods representative of the UK diet were selected
@@ -49,6 +50,9 @@ ggplot2
 segmented
 
 ## Statistical Analyses
+
+An applied statistical analysis using correlation, linear regression, multiple regression, and non-linear modelling (LOESS and segmented regression) to quantify and visualise relationships between food composition and perceived satiety ratings.
+
 ### Macronutrients
 #### Correlation Analysis
 Protein showed a weak positive correlation with satiety, while carbohydrate and fat showed moderate negative correlations. Overall, carbohydrate and fat demonstrated stronger inverse relationships with satiety than protein.
