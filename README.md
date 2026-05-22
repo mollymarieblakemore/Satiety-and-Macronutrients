@@ -13,30 +13,40 @@ This study examines how macronutrient composition and energy density influence p
 Sampling used a ternary plot design
 2,010 participants completed an online survey
 Participants rated:
-General satiety
-Portion satiety
-Food liking
-Hedonic overconsumption
-Ratings were measured using a 100-point Visual Analogue Scale (VAS)
+General satiety,
+Portion satiety,
+Food liking,
+Hedonic overconsumption.
+Ratings were measured using a 100-point Visual Analogue Scale (VAS).
 
 ## Dataset
 ### Variables used:
 PS_mixmeans – General satiety
+
 Por_mixmeans – Portion satiety
+
 ProteinG – Protein content
+
 CarbG – Carbohydrate content
+
 FatG – Fat content
+
 KCAL_100g – Energy density
 
 ## Packages Used
 haven
+
 psych
+
 car
+
 lmtest
+
 sandwich
+
 ggplot2
+
 segmented
-dplyr
 
 ## Statistical Analyses
 ### Macronutrients
@@ -54,13 +64,16 @@ Overall, carbohydrate showed the strongest predictive relationship, followed by 
 Assumption checks included:
 
 Multicollinearity (VIF)
+
 Residual normality
+
 Independence of errors (Durbin–Watson)
+
 Heteroskedasticity (Breusch–Pagan test)
 
 The overall model was significant:
 F(3, 308) = 27.53, p < .001
-R² = .211 (Adjusted R² = .204)
+R² = .211 (Adjusted R² = .204).
 Carbohydrate and fat were significant negative predictors, while protein was not significant when controlling for other macronutrients.
 
 ### Energy Density
