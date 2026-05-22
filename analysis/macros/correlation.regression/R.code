@@ -14,6 +14,37 @@ cor_protein <-cor.test(SM$satiety, SM$ProteinG, method = "pearson")
 cor_carb <-cor.test(SM$satiety, SM$CarbG, method = "pearson")
 cor_fat <-cor.test(SM$satiety, SM$FatG, method = "pearson")
 
+#------
+#Plots
+#------
+
+ ggplot(SM, aes(x = ProteinG, y = satiety)) +
+  geom_point() +
+  labs(
+    title = "Scatterplot Showing the Relationship Between Percieved Satiety and Protein.",
+    x = "Protein (g)",
+    y = "Satiety"
+  ) +
+  theme_minimal()
+
+ggplot(SM, aes(x = CarbG, y = satiety)) +
+  geom_point() +
+  labs(
+    title = "Scatterplot Showing the Relationship Between Percieved sateity and Carbohydrate.",
+    x = "Carbohydrate (g)",
+    y = "Perceived Satiety"
+  ) +
+  theme_minimal()
+
+ggplot(SM, aes(x = FatG, y = satiety)) +
+  geom_point() +
+  labs(
+    title = "Scatterplot Showing the Relationship Between Percieved satiety and Fat.",
+    x = "Fat (g)",
+    y = "Percieved Satiety"
+  ) +
+  theme_minimal()
+
 #All correlations (p <.05) 
 
 #-----------------
