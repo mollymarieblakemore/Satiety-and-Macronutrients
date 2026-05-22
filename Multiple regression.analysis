@@ -1,0 +1,61 @@
+#Install:
+
+library(car) 
+library(lmtest)
+library(sandwich)
+library(ggplot2)
+library(segmented)
+
+#------------------
+#Multiple Regression
+#-------------------
+    
+multiple_reg <- lm(satiety ~ ProteinG + CarbG + FatG, data = SM)
+
+#Assumption Testing
+
+#Standardised residuals (normality and outliers)
+std_res <- rstandard(multiple_reg)
+# Checked residual distribution for normality and outliers 
+# Visual plot indicates only one mild outlier
+
+# Variance Inflation Factors (VIF) to assess multicollinearity among predictors
+vif(multiple_reg)
+# VIF values indicate low multicollinearity among predictors
+
+
+# Independence of residuals
+durbinWatsonTest(multiple_reg)
+
+# Distribution of standardised residuals 
+  hist(std_res, breaks = 20, main = "Standardised Residuals") 
+
+# Diagnostic plots
+
+# Produces:
+# 1. Residuals vs Fitted
+# 2. Normal Q-Q
+# 3. Scale-Location
+# 4. Residuals vs Leverage
+
+par(mfrow = c(2,2))
+plot(multiple_reg)
+par(mfrow = c(1, 1))
+
+# Residuals vs fitted plot suggests potential heteroskedasticity
+
+# Heteroskedasticity test
+
+lmtest::bptest(multiple_reg)
+
+# Interpretation:
+# A significant Breusch–Pagan test (p < .001)
+# Suggests heteroskedasticity is present
+
+# Robust standard errors applied due to heteroskedasticity
+coeftest(multiple_reg, vcov = vcovHC(multiple_reg, type = "HC1"))
+
+# Coefficient significance remains consistent after applying heteroskedasticity-robust standard errors
+
+summary(multiple_reg)
+
