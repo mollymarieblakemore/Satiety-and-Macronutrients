@@ -8,8 +8,10 @@ ggplot(SM, aes(x = KCAL_100g, y = satiety)) +
   labs(
     title = "LOESS Curve with 95% Confidence Interval: Energy Density vs Satiety",
     x = "KCAL per 100g",
-    y = "Satiety Rating" )
-+ theme_minimal()
+    y = "Satiety Rating"
+  ) +
+  theme_minimal()
+
 #----------------------
 # Segmented Regression
 #----------------------
@@ -22,4 +24,4 @@ ggplot(SM, aes(x = KCAL_100g, y = satiety)) +
  confint(segmented_model)
  plot(segmented_model)
 
-# Estimated breakpoint ≈ 120.24 kcal/100g
+# Estimated statistical breakpoint ≈ 120.24 kcal/100g
