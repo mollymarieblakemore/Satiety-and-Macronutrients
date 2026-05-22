@@ -3,20 +3,30 @@ library("haven")
 #--------------
 # Data Import
 #--------------
-  
-# Data assigned to object SM (Satiety Macronutrients)
-SM <- read_sav("mixed_means_df_GP_complete-2.sav")
- 
+SM.whole <- read_sav("/Users/mollyblakemore/Desktop/mixed_means_df_GP_complete-2.sav")
+# Data assigned to object SM.whole (Satiety Macronutrients)
+SM.whole <- read_sav("/Users/mollyblakemore/Desktop/mixed_means_df_GP_complete-2.sav")
+
+#---------------------------
+# Select relevant  variables
+#---------------------------
+
+SM <- SM.whole[, c("PS_mixmeans", "Por_mixmeans", "ProteinG", "CarbG","FatG", "KCAL_100g" )]
+
 # Check variable names
 names(SM)
 
-#------------------
+# Check data for missing and non-numeric values
+colSums(is.na(SM))
+sapply(SM, is.numeric)
+
+#------------------––
 # Feature Engineering
-#------------------
+#------------------––
  
 # Check relationship between satiety measures
 sat_cor <- cor.test(SM$PS_mixmeans, SM$Por_mixmeans, method = "pearson")
 
 # High correlation (r > .8) indicates multicollinearity
 # Create composite satiety variable
-satiety <- rowMeans(SM[, c("PS_mixmeans", "Por_mixmeans")])
+SM$satiety <- rowMeans(SM[, c("PS_mixmeans", "Por_mixmeans")])
