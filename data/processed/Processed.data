@@ -1,4 +1,18 @@
-library("haven")
+# Run only if packages are not installed
+required_packages <- c("haven","psych","car","lmtest","dplyr","sandwich","ggplot2","segmented")
+
+installed <- required_packages %in% rownames(installed.packages())
+if (any(!installed)) {
+  install.packages(required_packages[!installed])
+}
+library(haven)
+library(psych)
+library(car)
+library(lmtest)
+library(sandwich)
+library(ggplot2)
+library(segmented)
+library(dplyr)
   
 #--------------
 # Data Import
@@ -11,7 +25,8 @@ SM.whole <- read_sav("/Users/mollyblakemore/Desktop/mixed_means_df_GP_complete-2
 # Select relevant  variables
 #---------------------------
 
-SM <- SM.whole[, c("PS_mixmeans", "Por_mixmeans", "ProteinG", "CarbG","FatG", "KCAL_100g" )]
+SM <- SM.whole %>%
+  dplyr::select(PS_mixmeans, Por_mixmeans, ProteinG, CarbG, FatG, KCAL_100g)
 
 # Check variable names
 names(SM)
@@ -29,4 +44,5 @@ sat_cor <- cor.test(SM$PS_mixmeans, SM$Por_mixmeans, method = "pearson")
 
 # High correlation (r > .8) indicates multicollinearity
 # Create composite satiety variable
-SM$satiety <- rowMeans(SM[, c("PS_mixmeans", "Por_mixmeans")], na.rm = TRUE)
+SM <- SM %>%
+  mutate(satiety = rowMeans(select(., PS_mixmeans, Por_mixmeans), na.rm = TRUE))
