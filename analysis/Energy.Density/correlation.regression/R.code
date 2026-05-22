@@ -9,7 +9,7 @@ library(ggplot2)
 ggplot(SM, aes(x = KCAL_100g, y = satiety)) +
   geom_point() +
   labs(
-    title = "Relationship Between Energy Density and Satiety",
+    title = "Relationship Between Energy Density and Perceived Satiety",
     x = "KCAL per 100g",
     y = "Percieved Satiety"
   ) +
