@@ -94,7 +94,7 @@ Energy density showed a clear negative relationship with satiety.
 Evidence suggests possible non-linear relationship with a breakpoint of ~120 kcal/100g.
 
 ## Reproducibility
-This project is structured for reproducibility using relative file paths and a standard analysis workflow. All scripts can be run from the project root directory.
+This project is structured for reproducibility as all scripts can be run in R.
 
 ## Author
 Molly Blakemore
